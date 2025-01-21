@@ -386,7 +386,7 @@ export const projects = [
     {
         iconUrl: scanner,
         theme: "btn-back-pink",
-        name: "Full Stack Instagram Clone",
+        name: "Vulnerability Scanner",
         description:
             "This script can help crawl through all the links in a webpage and build a list of forms. Then it can be use to perform xss vulnerabilites test on these forms and links.",
         link: "https://github.com/itzVort3x1/vulnerability_scanner",
