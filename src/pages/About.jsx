@@ -4,7 +4,7 @@ import {
 } from "react-vertical-timeline-component";
 
 import { CTA, BoxRevealDemo } from "../components";
-import { experiences, skills, freelance } from "../constants";
+import { experiences, skills, freelance, education } from "../constants";
 
 import "react-vertical-timeline-component/style.min.css";
 
@@ -46,8 +46,9 @@ const About = () => {
                 </div>
             </div>
 
-            <div className="my-10 gap-16">
-                {freelance.map((project) => (
+            {/* <div className="mt-16 gap-16">
+                <h3 className="subhead-text my-8">My Education</h3>
+                {education.map((project) => (
                     <div className="w-full" key={project.name}>
                         <div className="block-container w-12 h-12">
                             <div
@@ -66,20 +67,10 @@ const About = () => {
                             <h4 className="text-2xl font-poppins font-semibold">
                                 {project.name}
                             </h4>
-                            <ul className="my-5 list-disc ml-5 space-y-2">
-                                {project.description.map((point, index) => (
-                                    <li
-                                        key={`freelance-description-${index}`}
-                                        className="text-black-500/50 font-normal pl-1 text-sm"
-                                    >
-                                        {point}
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> */}
 
             <div className="py-16">
                 <h3 className="subhead-text">Work Experience.</h3>

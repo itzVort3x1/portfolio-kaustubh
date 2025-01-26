@@ -358,6 +358,14 @@ export const freelance = [
     },
 ];
 
+export const education = [
+    {
+        iconUrl: shootfolder,
+        theme: "btn-back-orange",
+        name: "Trinity College Dublin",
+    },
+];
+
 export const projects = [
     {
         iconUrl: code,
