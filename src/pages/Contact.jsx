@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
+import axios from "axios";
 
 import { Fox } from "../models";
 import useAlert from "../hooks/useAlert";
@@ -25,50 +26,49 @@ const Contact = () => {
         setLoading(true);
         setCurrentAnimation("hit");
 
-        emailjs
-            .send(
-                import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-                {
-                    from_name: form.name,
-                    to_name: "JavaScript Mastery",
-                    from_email: form.email,
-                    to_email: "sujata@jsmastery.pro",
-                    message: form.message,
-                },
-                import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-            )
-            .then(
-                () => {
-                    setLoading(false);
-                    showAlert({
-                        show: true,
-                        text: "Thank you for your message 😃",
-                        type: "success",
-                    });
+        await axios
+            .post("https://mail-server-amber.vercel.app/sendEmail", {
+                username: form.name,
+                email: form.email,
+            })
+            .then(async () => {
+                setLoading(false);
+                showAlert({
+                    show: true,
+                    text: "Thank you for your message 😃",
+                    type: "success",
+                });
 
-                    setTimeout(() => {
-                        hideAlert(false);
-                        setCurrentAnimation("idle");
-                        setForm({
-                            name: "",
-                            email: "",
-                            message: "",
-                        });
-                    }, [3000]);
-                },
-                (error) => {
-                    setLoading(false);
-                    console.error(error);
+                setTimeout(() => {
+                    hideAlert(false);
                     setCurrentAnimation("idle");
-
-                    showAlert({
-                        show: true,
-                        text: "I didn't receive your message 😢",
-                        type: "danger",
+                    setForm({
+                        name: "",
+                        email: "",
+                        message: "",
                     });
-                }
-            );
+                }, [3000]);
+
+                await axios.post(
+                    "https://mail-server-amber.vercel.app/sendAdminEmail",
+                    {
+                        username: form.name,
+                        email: form.email,
+                        message: form.message,
+                    }
+                );
+            })
+            .catch((error) => {
+                setLoading(false);
+                console.error(error);
+                setCurrentAnimation("idle");
+
+                showAlert({
+                    show: true,
+                    text: "I didn't receive your message 😢",
+                    type: "danger",
+                });
+            });
     };
 
     return (
