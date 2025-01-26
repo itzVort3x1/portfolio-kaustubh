@@ -8,6 +8,9 @@ import { experiences, skills } from "../constants";
 
 import "react-vertical-timeline-component/style.min.css";
 
+import { cn } from "../../lib/utils";
+import { DotPattern } from "../../components/ui/dot-pattern";
+
 const About = () => {
     return (
         <section className="max-container">
@@ -20,7 +23,7 @@ const About = () => {
                 👋
             </h1>
 
-            <div className="mt-5 flex flex-col gap-3 text-slate-500">
+            <div className="mt-5 flex flex-col gap-3 text-black-500">
                 <p>
                     Software Engineer based in Dublin, specializing in
                     Full-Stack Development through hands-on learning and
@@ -28,9 +31,15 @@ const About = () => {
                 </p>
             </div>
 
+            <div className="left-0 w-full h-full absolute">
+                <DotPattern
+                    className={cn(
+                        "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
+                    )}
+                />
+            </div>
             <div className="py-10 flex flex-col">
                 <h3 className="subhead-text">My Skills</h3>
-
                 <div className="mt-16 flex flex-wrap gap-12">
                     {skills.map((skill) => (
                         <div
@@ -66,7 +75,9 @@ const About = () => {
                             <VerticalTimelineElement
                                 key={experience.company_name}
                                 date={experience.date}
-                                iconStyle={{ background: experience.iconBg }}
+                                iconStyle={{
+                                    background: experience.iconBg,
+                                }}
                                 icon={
                                     <div className="flex justify-center items-center w-full h-full">
                                         <img
