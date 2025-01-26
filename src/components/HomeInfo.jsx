@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 import { arrow } from "../assets/icons";
 
+import { AnimatedShinyTextDemo } from "../components";
+
 const HomeInfo = ({ currentStage }) => {
     if (currentStage === 1)
         return (

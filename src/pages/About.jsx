@@ -3,33 +3,20 @@ import {
     VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 
-import { CTA } from "../components";
-import { experiences, skills } from "../constants";
+import { CTA, BoxRevealDemo } from "../components";
+import { experiences, skills, freelance } from "../constants";
 
 import "react-vertical-timeline-component/style.min.css";
 
 import { cn } from "../../lib/utils";
 import { DotPattern } from "../../components/ui/dot-pattern";
 
+// import BoxRevealDemo from "../components";
+
 const About = () => {
     return (
         <section className="max-container">
-            <h1 className="head-text">
-                Hello, I'm{" "}
-                <span className="blue-gradient_text font-semibold drop-shadow">
-                    {" "}
-                    Kaustubh
-                </span>{" "}
-                👋
-            </h1>
-
-            <div className="mt-5 flex flex-col gap-3 text-black-500">
-                <p>
-                    Software Engineer based in Dublin, specializing in
-                    Full-Stack Development through hands-on learning and
-                    building applications.
-                </p>
-            </div>
+            <BoxRevealDemo />
 
             <div className="left-0 w-full h-full absolute">
                 <DotPattern
@@ -57,6 +44,41 @@ const About = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            <div className="my-10 gap-16">
+                {freelance.map((project) => (
+                    <div className="w-full" key={project.name}>
+                        <div className="block-container w-12 h-12">
+                            <div
+                                className={`btn-back rounded-xl ${project.theme}`}
+                            />
+                            <div className="btn-front rounded-xl flex justify-center items-center">
+                                <img
+                                    src={project.iconUrl}
+                                    alt="threads"
+                                    className="w-1/2 h-1/2 object-contain"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="mt-5 flex flex-col">
+                            <h4 className="text-2xl font-poppins font-semibold">
+                                {project.name}
+                            </h4>
+                            <ul className="my-5 list-disc ml-5 space-y-2">
+                                {project.description.map((point, index) => (
+                                    <li
+                                        key={`freelance-description-${index}`}
+                                        className="text-black-500/50 font-normal pl-1 text-sm"
+                                    >
+                                        {point}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                ))}
             </div>
 
             <div className="py-16">
