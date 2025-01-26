@@ -60,6 +60,7 @@ import scanner from "./scan.svg";
 import lms from "./lms.svg";
 import streamy from "./streamy.svg";
 import shootfolder from "./shootfolder.svg";
+import MouseScroll from "./mouse-scroll.svg";
 
 export {
     css,
@@ -124,4 +125,5 @@ export {
     lms,
     streamy,
     shootfolder,
+    MouseScroll,
 };
