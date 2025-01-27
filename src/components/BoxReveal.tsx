@@ -8,7 +8,7 @@ const BoxRevealDemo = () => {
                     Hello, I'm{" "}
                     <span className="blue-gradient_text font-semibold drop-shadow">
                         {" "}
-                        Kaustubh
+                        &nbsp;Kaustubh
                     </span>{" "}
                     👋
                 </h1>
